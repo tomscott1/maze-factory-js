@@ -1,0 +1,1 @@
+var u={buildMaze:(r,a)=>{if(isNaN(r)||isNaN(a))throw new Error("[buildMaze] height and width must be valid numbers");r=r|0,a=a|0;let o=[];for(let e=0;e<r;e++)o.push(Array.from({length:a},()=>Math.round(Math.random())));return console.log(o),o}};export{u as default};
