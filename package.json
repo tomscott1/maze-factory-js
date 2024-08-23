@@ -1,8 +1,8 @@
 {
   "type": "module",
   "name": "maze-build",
-  "version": "0.2.0",
-  "developmentVersion": "0.1.0",
+  "version": "0.0.1",
+  "developmentVersion": "0.0.1",
   "description": "Library to build Mazes",
   "main": "./dist/index.js",
   "scripts": {
