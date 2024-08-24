@@ -2,7 +2,7 @@
   "type": "module",
   "name": "maze-build",
   "version": "0.0.1",
-  "developmentVersion": "0.0.1",
+  "developmentVersion": "0.0.2",
   "description": "Library to build Mazes",
   "main": "./dist/index.js",
   "scripts": {
