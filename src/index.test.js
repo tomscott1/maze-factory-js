@@ -18,4 +18,13 @@ describe('index.js', () => {
     }).toThrow('[buildMaze] height and width must be valid numbers')
   })
 
+  test('generateBacktrack returns an array with every object visited property is true', () => {
+    const height = 4
+    const width = 4
+    const result = maze.generateBacktrack(height, width)
+    for (let i = 0; i < height * width; i++) {
+      expect(result[i].visited).toBe(true)
+    }
+  })
+
 })
