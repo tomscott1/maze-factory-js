@@ -1,4 +1,4 @@
-### MAZE Build
+### Maze Factory
 
 ---
 
