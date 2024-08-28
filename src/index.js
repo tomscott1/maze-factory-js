@@ -1,5 +1,5 @@
-import backtrack from './backtrack'
-
+import backtrack from './backtrack.js'
+ 
 export default {
   buildMaze: (width, height) => {
     if (isNaN(height) || isNaN(width)) {
@@ -15,10 +15,12 @@ export default {
     return output
   },
 
-  generateBacktrack: (width, height) => {
-    return backtrack.generate(width, height)
+  generateBacktrack: (width, height, shape) => {
+    switch (shape) {
+      case 'squares':
+        return backtrack.generateSquares(width, height)
+      case 'hexagons':
+        return backtrack.generateHexagons(width, height)
+    }
   }
-
 }
-
-// buildMaze(100,100)
