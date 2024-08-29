@@ -33,13 +33,13 @@ export default {
         
         let unvisitedNeighbours = []
         // North Neighbour
-        if (y > 0 && !cells[(y - 1) * height + x].visited) unvisitedNeighbours.push(0)
+        if (y > 0 && !cells[(y - 1) * width + x].visited) unvisitedNeighbours.push(0)
         // East Neighbour
-        if (x < width - 1 && !cells[y * height + (x + 1)].visited) unvisitedNeighbours.push(1)
+        if (x < width - 1 && !cells[y * width + (x + 1)].visited) unvisitedNeighbours.push(1)
         // South Neighbour
-        if (y < height - 1 && !cells[(y + 1) * height + x].visited) unvisitedNeighbours.push(2)
+        if (y < height - 1 && !cells[(y + 1) * width + x].visited) unvisitedNeighbours.push(2)
         // West Neighbour
-        if (x > 0 && !cells[y * height + (x - 1)].visited) unvisitedNeighbours.push(3)
+        if (x > 0 && !cells[y * width + (x - 1)].visited) unvisitedNeighbours.push(3)
 
         if (unvisitedNeighbours.length == 0) {
           // all neighbours visited therefore pop the stack
@@ -111,6 +111,14 @@ export default {
       cells[y * height + x].visited = true
       cellStack.push([x, y])
 
+      const getNeighbour = (location, direction) => {
+        const [x, y] = location
+        switch (direction) {
+          case 0:
+            return (y - 1) * height + x
+        }
+      }
+
       // backtrack algorithm
       while (visitCount < width * height) {
         [x, y] = cellStack[cellStack.length - 1]
@@ -118,22 +126,22 @@ export default {
         let unvisitedNeighbours = []
 
         // North Neighbour
-        if (y > 0 && !cells[(y - 1) * height + x].visited) unvisitedNeighbours.push(0)
+        if (y > 0 && !cells[getNeighbour([x,y], 0)].visited) unvisitedNeighbours.push(0)
 
         // North West Neighbour
-        if ((x > 0 && (x % 2 == 1 || y != 0)) && !cells[(y - 1 + (x % 2))* height + (x - 1)].visited) unvisitedNeighbours.push(1)
+        if ((x > 0 && (x % 2 == 1 || y != 0)) && !cells[(y - 1 + (x % 2)) * width + (x - 1)].visited) unvisitedNeighbours.push(1)
 
         // North East Neighbour
-        if ((x < width - 1 && (x % 2 == 1 || y != 0)) && !cells[(y - 1 + (x % 2)) * height + (x + 1)].visited) unvisitedNeighbours.push(2)
+        if ((x < width - 1 && (x % 2 == 1 || y != 0)) && !cells[(y - 1 + (x % 2)) * width + (x + 1)].visited) unvisitedNeighbours.push(2)
 
         // South Neighbour
-        if (y < height - 1 && !cells[(y + 1) * height + x].visited) unvisitedNeighbours.push(3)
+        if (y < height - 1 && !cells[(y + 1) * width + x].visited) unvisitedNeighbours.push(3)
 
         // South West Neighbour
-        if (x > 0 && (x % 2 == 0 || y !== height - 1) &&!cells[(y + (x % 2)) * height + (x - 1)].visited) unvisitedNeighbours.push(4)
+        if (x > 0 && (x % 2 == 0 || y !== height - 1) &&!cells[(y + (x % 2)) * width + (x - 1)].visited) unvisitedNeighbours.push(4)
 
         // South East Neighbour
-        if (x < width - 1 && (x % 2 == 0 || y !== height - 1) &&!cells[(y + (x % 2)) * height + (x + 1)].visited) unvisitedNeighbours.push(5)
+        if (x < width - 1 && (x % 2 == 0 || y !== height - 1) &&!cells[(y + (x % 2)) * width + (x + 1)].visited) unvisitedNeighbours.push(5)
         
         if (unvisitedNeighbours.length == 0) {
           // all neighbours visited therefore pop the stack
