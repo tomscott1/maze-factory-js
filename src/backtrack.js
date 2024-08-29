@@ -108,14 +108,14 @@ export default {
       let x = 0 
       let y = 0
       let cellStack = []
-      cells[y * height + x].visited = true
+      cells[y * width + x].visited = true
       cellStack.push([x, y])
 
       const getNeighbour = (location, direction) => {
         const [x, y] = location
         switch (direction) {
           case 0:
-            return (y - 1) * height + x
+            return (y - 1) * width + x
         }
       }
 
