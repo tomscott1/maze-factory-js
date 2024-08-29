@@ -50,30 +50,30 @@ export default {
           switch (nextDirection) {
             case 0:
               // North
-              cells[(y - 1) * height + x].visited = true
-              cells[(y - 1) * height + x].pathSouth = true
-              cells[y * height + x].pathNorth = true
+              cells[(y - 1) * width + x].visited = true
+              cells[(y - 1) * width + x].pathSouth = true
+              cells[y * width + x].pathNorth = true
               cellStack.push([x, y - 1])
               break;
             case 1:
               // East
-              cells[y * height + (x + 1)].visited = true
-              cells[y * height + (x + 1)].pathWest = true
-              cells[y * height + x].pathEast = true
+              cells[y * width + (x + 1)].visited = true
+              cells[y * width + (x + 1)].pathWest = true
+              cells[y * width + x].pathEast = true
               cellStack.push([x + 1, y])
               break;
             case 2:
               // South
-              cells[(y + 1) * height + x].visited = true
-              cells[(y + 1) * height + x].pathNorth = true
-              cells[y * height + x].pathSouth = true
+              cells[(y + 1) * width + x].visited = true
+              cells[(y + 1) * width + x].pathNorth = true
+              cells[y * width + x].pathSouth = true
               cellStack.push([x, y + 1])
               break;
             case 3:
               // West
-              cells[y * height + (x - 1)].visited = true
-              cells[y * height + (x - 1)].pathEast = true
-              cells[y * height + x].pathWest = true
+              cells[y * width + (x - 1)].visited = true
+              cells[y * width + (x - 1)].pathEast = true
+              cells[y * width + x].pathWest = true
               cellStack.push([x - 1, y])
               break;
           }
@@ -84,7 +84,7 @@ export default {
     })
   },
 
-  generateHexagons: (height, width) => {
+  generateHexagons: (width, height) => {
     return new Promise(async (resolve) => {
       // initiate hexagonal cells
       let cells = [];
@@ -152,44 +152,44 @@ export default {
           switch (nextDirection) {
             case 0:
               // North
-              cells[(y - 1) * height + x].visited = true
-              cells[(y - 1) * height + x].pathSouth = true
-              cells[y * height + x].pathNorth = true
+              cells[(y - 1) * width + x].visited = true
+              cells[(y - 1) * width + x].pathSouth = true
+              cells[y * width + x].pathNorth = true
               cellStack.push([x, y - 1])
               break;
             case 1:
               // North West
-              cells[(y - 1 + (x % 2)) * height + (x - 1)].visited = true
-              cells[(y - 1 + (x % 2)) * height + (x - 1)].pathSouthEast = true
-              cells[y * height + x].pathNorthWest = true
+              cells[(y - 1 + (x % 2)) * width + (x - 1)].visited = true
+              cells[(y - 1 + (x % 2)) * width + (x - 1)].pathSouthEast = true
+              cells[y * width + x].pathNorthWest = true
               cellStack.push([x - 1, y - 1 + (x % 2)])
               break;
             case 2:
               // North East
-              cells[(y - 1 + (x % 2)) * height + (x + 1)].visited = true
-              cells[(y - 1 + (x % 2)) * height + (x + 1)].pathSouthWest = true
-              cells[y * height + x].pathNorthEast = true
+              cells[(y - 1 + (x % 2)) * width + (x + 1)].visited = true
+              cells[(y - 1 + (x % 2)) * width + (x + 1)].pathSouthWest = true
+              cells[y * width + x].pathNorthEast = true
               cellStack.push([x + 1, y - 1 + (x % 2)])
               break;
             case 3:
               // South
-              cells[(y + 1) * height + x].visited = true
-              cells[(y + 1) * height + x].pathNorth = true
-              cells[y * height + x].pathSouth = true
+              cells[(y + 1) * width + x].visited = true
+              cells[(y + 1) * width + x].pathNorth = true
+              cells[y * width + x].pathSouth = true
               cellStack.push([x, y + 1])
               break;
             case 4:
               // South West
-              cells[(y + (x % 2)) * height + (x - 1)].visited = true
-              cells[(y + (x % 2)) * height + (x - 1)].pathNorthEast = true
-              cells[y * height + x].pathSouthWest = true
+              cells[(y + (x % 2)) * width + (x - 1)].visited = true
+              cells[(y + (x % 2)) * width + (x - 1)].pathNorthEast = true
+              cells[y * width + x].pathSouthWest = true
               cellStack.push([x - 1, y + (x % 2)])
               break;
             case 5:
               // South East
-              cells[(y + (x % 2)) * height + (x + 1)].visited = true
-              cells[(y + (x % 2)) * height + (x + 1)].pathNorthWest = true
-              cells[y * height + x].pathSouthEast = true
+              cells[(y + (x % 2)) * width + (x + 1)].visited = true
+              cells[(y + (x % 2)) * width + (x + 1)].pathNorthWest = true
+              cells[y * width + x].pathSouthEast = true
               cellStack.push([x + 1, y + (x % 2)])
               break;
           }
